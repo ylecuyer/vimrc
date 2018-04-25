@@ -18,9 +18,11 @@ if dein#load_state('/home/ylecuyer/.vim/bundles')
   call dein#add('keith/rspec.vim')
   call dein#add('scrooloose/nerdcommenter')
   call dein#add('scrooloose/nerdtree')
-  call dein#add('majutsushi/tagbar')
   call dein#add('kien/ctrlp.vim')
   call dein#add('nelstrom/vim-blackboard')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('wakatime/vim-wakatime')
+  call dein#add('ntpeters/vim-better-whitespace')
 
   " Required:
   call dein#end()
@@ -50,11 +52,12 @@ set shiftwidth=2
 
 let mapleader = ","
 
-nmap <F2> :NERDTreeToggle<CR>
-nmap <F12> :TagbarToggle<CR>
-
-set backupdir=~/.vim/backup_files//
-set directory=~/.vim/swap_files//
-set undodir=~/.vim/undo_files//
-
 colorscheme blackboard
+
+let g:test#ruby#rspec#executable = 'source ~/.bash_profile && rvm gemset use engagement_console && rspec'
+let g:strip_whitespace_on_save = 1
+
+nmap <F2> :NERDTreeToggle<CR>
+nmap <F3> :TestNearest<CR>
+nmap <F4> :TestFile<CR>
+nmap <F12> :Gblame<CR>
